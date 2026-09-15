@@ -1,0 +1,30 @@
+PowerBot Mobile APK - 3 ways (easiest first)
+============================================
+
+OPTION 1 - Instant App (No build, Recommended):
+1. Run PowerBot.bat on your laptop
+2. Note the Mobile URL, e.g. http://192.168.1.5:8080
+3. On your phone (same Wi-Fi), open that URL in Chrome
+4. Chrome menu > Add to Home Screen > Install
+5. Done! You now have a PowerBot app icon like an APK.
+   This uses static/manifest.json + icon-192/512.png (already created).
+
+OPTION 2 - PWABuilder.com (Real APK, no code):
+1. Your PowerBot web UI must be reachable via HTTPS for PWABuilder.
+   For local Wi-Fi use, easiest is to use Option 1 or 3.
+2. Or deploy static/index.html to Netlify/Vercel, then go to
+   https://www.pwabuilder.com -> enter URL -> Package for Android
+
+OPTION 3 - Android Studio (Real APK, works on local Wi-Fi):
+1. Open Android Studio > New Project > Empty Views Activity
+2. Package name: com.powerbot.controller
+3. Replace app/src/main/java/.../MainActivity.kt with mobile-apk/MainActivity.kt
+4. Replace app/src/main/AndroidManifest.xml permissions with mobile-apk/AndroidManifest.xml
+5. Add dependency in build.gradle: implementation 'androidx.appcompat:appcompat:1.6.1'
+6. Build > Build App Bundle(s) / APK(s) > Build APK(s)
+7. Copy app-debug.apk to phone, install, enter laptop IP when asked.
+
+How it works:
+- Laptop runs Python server (PowerBot.bat)
+- Phone app is just a remote control WebView - it loads http://LAPTOP-IP:8080
+- Both must be on same Wi-Fi. PIN default: 1234

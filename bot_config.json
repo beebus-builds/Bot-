@@ -1,0 +1,7 @@
+{
+  "pin_code": "1234",
+  "require_pin": true,
+  "http_port": 8080,
+  "auto_start": false,
+  "server_running": true
+}
